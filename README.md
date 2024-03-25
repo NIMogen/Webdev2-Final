@@ -1,10 +1,11 @@
 # Webdev 2 Final
 
 - Adapted from https://github.com/ahuth/raycast, a raycasting game renderer implemented in react
-- Raycasting is a primitive rendering technique by which "rays" from the users line-of-site are sent out and used
-to render a space of uniform height. The most famous game to use this techique is probably Wolfenstein 3D from the early 90s.
+- Raycasting is a primitive rendering technique by which a space of uniform height is divided into columns, and "rays" from the users line-of-site are sent out and used
+to detect which columns are visible. The most famous game to use this techique is probably Wolfenstein 3D from the early 90s. This implentation uses `div` tags for the columns.  
 - For the final, I added a menu component that is overlayed when the user toggles it. It's also connected to a mongodb backend so that the user
 can save the state of the game. Currently, it only saves the users coordinates (position on the map), but it could be used to save which map they were on, plus any additional state that might be attached to the user and/or level. 
+- I wanted to mess with the engine more and implement support for textures, but I didn't get around to it :( 
 
 ## MongoDB setup
 - I've been using mongodb from a docker container. The image can be pulled with `docker pull mongodb/mongodb-community-server:latest`.
