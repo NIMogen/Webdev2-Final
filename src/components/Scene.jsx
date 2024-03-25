@@ -21,23 +21,26 @@ export default function Scene({
     let x = player.position.x;
     let y = player.position.y;
     console.log('Saving game...');
-    let result = await fetch(
+    let result = fetch(
       'http://localhost:5000/save', {
-          method: "post",
-          body: JSON.stringify({ x, y }),
+          method: 'post',
+          body: JSON.stringify({ playerX: x, playerY: y }),
           headers: {
-              'Content-Type': 'application/json'
-          }
+              'Content-Type': 'application/json',
+          },
       });
-      result = await result.json();
       console.log(result);
   }
 
   // Restore gameState from mongoDB
   function loadGame() {
     console.log('Loading game...');
-    let result = await fetch('http://localhost:5000/load');
-    let resJson = await result.json();
+    fetch('http://localhost:5000/load')
+      .then((result) => result.json()
+          .then((dat) => {
+            player.position.x = dat.playerX;
+            player.position.y = dat.playerY;
+          }));
   }
 
   function handleMenuSelection(selected) {
